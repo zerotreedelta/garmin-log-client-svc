@@ -1,0 +1,8 @@
+{
+    "body": "{\"tripNote\":\"hello world\",\"firstFileKey\":\"hello1.jpg\",\"secondFileKey\":\"hello2.jpg\"}",
+    "requestContext": {
+      "identity": {
+        "cognitoIdentityId": "USER-SUB-1234"
+      }
+    }
+  }

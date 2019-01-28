@@ -1,0 +1,81 @@
+
+serverless training - conn info
+
+dynamo:
+  table name: notes
+  arn:aws:dynamodb:us-west-2:049640433002:table/notes
+
+s3:
+  arn:aws:s3:::training-servrerless-app-file-upload
+
+cognito:
+  pool id: us-west-2_TslO9ktcc
+  arn:aws:cognito-idp:us-west-2:049640433002:userpool/us-west-2_TslO9ktcc
+  app client id: 4qpv0p7ojqsf62h7b8tqfq590b
+  https://serverless-training-notes-app.auth.us-west-2.amazoncognito.com
+
+
+  aws cognito-idp sign-up \
+  --region us-west-2 \
+  --client-id 4qpv0p7ojqsf62h7b8tqfq590b \
+  --username ajaworski@rollinghot.com \
+  --password MyF1rstS3rverl3ss8pp!
+
+  response:
+
+{
+    "UserConfirmed": false,
+    "UserSub": "ab8c7ee9-e338-4432-bded-a4eda76370c1",
+    "CodeDeliveryDetails": {
+        "AttributeName": "email",
+        "Destination": "a***@r***.com",
+        "DeliveryMedium": "EMAIL"
+    }
+}
+
+aws cognito-idp admin-confirm-sign-up \
+  --region us-west-2 \
+  --user-pool-id us-west-2_TslO9ktcc \
+  --username ajaworski@rollinghot.com
+
+mock create note request...
+{
+    "statusCode": 200,
+    "headers": {
+        "Access-Control-Allow-Origin": "*",
+        "Access-Control-Allow-Credentials": true
+    },
+    "body": "{\"userId\":\"USER-SUB-1234\",\"noteId\":\"2a5a4b60-217d-11e9-9309-8df192045906\",\"content\":\"hello world\",\"attachment\":\"hello.jpg\",\"createdAt\":1548515707670}"
+}
+
+
+POST - https://2d3evfkybh.execute-api.us-east-1.amazonaws.com/prod/notes
+GET - https://2d3evfkybh.execute-api.us-east-1.amazonaws.com/prod/notes/{id}
+GET - https://2d3evfkybh.execute-api.us-east-1.amazonaws.com/prod/notes
+PUT - https://2d3evfkybh.execute-api.us-east-1.amazonaws.com/prod/notes/{id}
+DELETE - https://2d3evfkybh.execute-api.us-east-1.amazonaws.com/prod/notes/{id}
+
+// Initialize the Amazon Cognito credentials provider
+CognitoCachingCredentialsProvider credentialsProvider = new CognitoCachingCredentialsProvider(
+    getApplicationContext(),
+    "us-west-2:e31263bd-ff33-4387-9e1b-6c5e47073c98", // Identity pool ID
+    Regions.US_WEST_2 // Region
+);
+
+pool id... for what?
+us-west-2:e31263bd-ff33-4387-9e1b-6c5e47073c98
+arn:aws:cognito-identity:us-west-2:049640433002:identitypool/us-west-2:e31263bd-ff33-4387-9e1b-6c5e47073c98
+
+// command line test
+npx aws-api-gateway-cli-test \
+--username='ajaworski@rollinghot.com' \
+--password='MyF1rstS3rverl3ss8pp!' \
+--user-pool-id='us-west-2_TslO9ktcc' \
+--app-client-id='4qpv0p7ojqsf62h7b8tqfq590b' \
+--cognito-region='us-west-2' \
+--identity-pool-id='us-west-2:e31263bd-ff33-4387-9e1b-6c5e47073c98' \
+--invoke-url='https://2d3evfkybh.execute-api.us-east-1.amazonaws.com/prod' \
+--api-gateway-region='us-east-1' \
+--path-template='/notes' \
+--method='POST' \
+--body='{"content":"hello world","attachment":"hello.jpg"}'
