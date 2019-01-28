@@ -31,7 +31,7 @@ provider:
         - dynamodb:PutItem
         - dynamodb:UpdateItem
         - dynamodb:DeleteItem
-      Resource: "arn:aws:dynamodb:us-west-2:049640433002:table/notes"
+      Resource: "arn:aws:dynamodb:us-west-2:ACCOUNT_ID:table/notes"
 
 functions:
   # Defines an HTTP API endpoint that calls the main function in create.js
