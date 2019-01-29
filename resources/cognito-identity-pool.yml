@@ -10,7 +10,7 @@ Resources:
       # Link to our User Pool
       CognitoIdentityProviders:
         - ClientId:
-            Ref: GarminPoolUserPoolClient
+            Ref: GarminLogUserPoolClient
           ProviderName:
             Fn::GetAtt: [ "GarminLogUserPool", "ProviderName" ]
             
