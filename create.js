@@ -5,7 +5,8 @@ import { success, failure } from "./libs/response-lib";
 export async function main(event, context) {
     const data = JSON.parse(event.body);
     const params = {
-      TableName: "notes",
+      // process.env.tableName coming from the serverless config for dynamo
+      TableName: process.env.tableName,
       Item: {
         userId: event.requestContext.identity.cognitoIdentityId,
         noteId: uuid.v1(),
