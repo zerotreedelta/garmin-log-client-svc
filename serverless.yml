@@ -1,4 +1,4 @@
-service: notes-app-api
+service: garmin-log-client-svc
 
 # Use the serverless-webpack plugin to transpile ES6
 plugins:
@@ -16,7 +16,7 @@ custom:
 provider:
   name: aws
   runtime: nodejs8.10
-  stage: prod
+  stage: dev
   region: us-east-1
 
   # 'iamRoleStatements' defines the permission policy for the Lambda function.
