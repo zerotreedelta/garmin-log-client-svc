@@ -2,35 +2,35 @@ Resources:
   IdentityPoolId:
     Type: "AWS::SSM::Parameter"
     Properties:
-      Name: IdentityPoolId
+      Name: /${self:service}/IdentityPoolId/${self:provider.stage}
       Type: String
       Value: ${cf:garmin-log-client-svc-${self:provider.stage}.IdentityPoolId}
 
   FileUploadBucketName:
     Type: "AWS::SSM::Parameter"
     Properties:
-      Name: FileUploadBucketName
+      Name: /${self:service}/FileUploadBucketName/${self:provider.stage}
       Type: String
       Value: ${cf:garmin-log-client-svc-${self:provider.stage}.FileUploadBucketName}
 
   UserPoolId:
     Type: "AWS::SSM::Parameter"
     Properties:
-      Name: UserPoolId
+      Name: /${self:service}/${self:service}/UserPoolId/${self:provider.stage}
       Type: String
       Value: ${cf:garmin-log-client-svc-${self:provider.stage}.UserPoolId}
 
   UserPoolClientId:
     Type: "AWS::SSM::Parameter"
     Properties:
-      Name: UserPoolClientId
+      Name: /${self:service}/UserPoolClientId/${self:provider.stage}
       Type: String
       Value: ${cf:garmin-log-client-svc-${self:provider.stage}.UserPoolClientId}
 
   ServiceEndpoint:
     Type: "AWS::SSM::Parameter"
     Properties:
-      Name: ServiceEndpoint
+      Name: /${self:service}/ServiceEndpoint/${self:provider.stage}
       Type: String
       Value: ${cf:garmin-log-client-svc-${self:provider.stage}.ServiceEndpoint}
 

@@ -34,6 +34,7 @@ provider:
   # under process.env.
   environment:
     tableName: ${self:custom.tableName}
+    serviceName: garmin-log-client-svc
 
   iamRoleStatements:
     - Effect: Allow
