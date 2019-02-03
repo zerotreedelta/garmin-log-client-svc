@@ -23,3 +23,5 @@ Outputs:
   FileUploadBucketName:
     Value:
       Ref: FileUploadBucket
+    Export:
+      Name: FileUploadBucketName

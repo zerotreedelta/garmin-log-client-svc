@@ -90,3 +90,5 @@ Outputs:
   IdentityPoolId:
     Value:
       Ref: GarminLogIdentityPool
+    Export:
+      Name: IdentityPoolId
