@@ -126,4 +126,5 @@ resources:
   # Cognito
   - ${file(resources/cognito-user-pool.yml)}
   - ${file(resources/cognito-identity-pool.yml)}
+  # SSM to store stack outputs
   - ${file(resources/ssm-param.yml)}

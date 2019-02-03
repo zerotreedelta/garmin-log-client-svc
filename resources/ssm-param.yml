@@ -34,13 +34,17 @@ Resources:
       Type: String
       Value: ${cf:garmin-log-client-svc-${self:provider.stage}.ServiceEndpoint}
 
-      # - Name: UserPoolId
-      #   Description: AuthN pool id
-      #   Type: String   
-      #   Value: {Ref: UserPoolId}  
-      # - Name: UserPoolClientId
-      #   Description: AuthN pool app id
-      #   Type: String   
-      #   Value: {Ref: UserPoolClientId}  
+  AWSServiceRegion:
+    Type: "AWS::SSM::Parameter"
+    Properties:
+      Name: /${self:service}/AWSServiceRegion/${self:provider.stage}
+      Type: String
+      Value: ${self:provider.region}
+
+  # maybe can store as just a simple json payload... to explore later
+  # ClientEnvVars:
+  #   Type: "AWS::SSM:Document"
+  #   Properties:
+  #     Content:
 
 
