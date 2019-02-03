@@ -16,7 +16,7 @@ Resources:
   UserPoolId:
     Type: "AWS::SSM::Parameter"
     Properties:
-      Name: /${self:service}/${self:service}/UserPoolId/${self:provider.stage}
+      Name: /${self:service}/UserPoolId/${self:provider.stage}
       Type: String
       Value: ${cf:garmin-log-client-svc-${self:provider.stage}.UserPoolId}
 
